@@ -18,6 +18,9 @@ LLMは文章生成や質問応答で高い性能を示していますが、
 生成した推論を振り返るReflexionなどを組み合わせることで、
 推論性能の改善を目指しています。
 
+## Proposed Architecture
+
+
 ## Methods
 
 - Chain-of-Thought (CoT)
@@ -25,18 +28,20 @@ LLMは文章生成や質問応答で高い性能を示していますが、
 - Reflexion
 - Proposed Method
 
-## Dataset
+## Experimental Setup
 
-GSM8K
+Dataset : GSM8K
+
+Model: Llama-3-8B-Instruct
 
 ## Results
 
-| Method | Accuracy |
-|---|---:|
-| CoT | 79.6% |
-| ToT | 85.9% |
-| ToT + Reflexion | 89.6% |
-| Proposed Method | 86.9% |
+| Method          | Accuracy |
+|-----------------|---------:|
+| CoT             | 79.6%    |
+| ToT             | 85.9%    |
+| ToT + Reflexion | 89.6%    |
+| Proposed Method | 86.9%    |
 
 ## Discussion
 
