@@ -1,40 +1,105 @@
 # llm-reasoning-research
-Evaluation of LLM reasoning methods using GSM8K
+探索的推論と反省型自己改善を活用した長期的推論モデルの構築
+
+CoT・ToT・Reflexion・STaR・LoRAを統合したLLMの数理推論性能向上に関する研究
 
 ## Overview
-大規模言語モデル（LLM）の推論性能向上を目的として、
-Chain-of-Thought（CoT）、Tree-of-Thought（ToT）、
-Reflexionなどの推論手法を実装・比較しています。
 
-また、探索的推論と反省型自己改善を組み合わせた
-推論モデルを構築し、その有効性を検証しています。
+大規模言語モデル（LLM）は、文章生成や質問応答で高い性能を示していますが、複雑ステップを必要とする数学的推論では、
+・計算ミス
+・問題条件の読み違い
+・誤った推論方式の選択
+によって、もっともらしい誤答を生成する可能性がある
+
+本研究では、
+
+Chain-of-Thought（CoT）
+Tree-of-Thoughts（ToT）
+Reflexion
+STaR
+LoRA
+
+による探索・自己修正・学習を行う推論システムを構築の検証
+
+低コストな推論から開始し、必要に応じて高度な推論へ移行する段階的な構成を採用
 
 ## Research Background
 
-LLMは文章生成や質問応答で高い性能を示していますが、
-複雑な推論問題では誤った推論を生成する場合があります。
+大規模言語モデル(LLM)は、文章生成や質問応答などで
+高い性能を示しています。
 
-そこで本研究では、複数の推論経路を探索するToTや、
-生成した推論を振り返るReflexionなどを組み合わせることで、
-推論性能の改善を目指しています。
+一方、複数段階の計算や判断が必要な問題では、
+途中で誤った推論を行い、そのまま最終回答を生成する場合があります。
+
+この課題に対して、推論過程を明示するChain-of-Thought（CoT）や、
+複数の推論経路を探索するTree-of-Thought（ToT）、
+生成した推論を振り返って改善するReflexionなど、
+推論時の処理を工夫する研究が行われています。
+
+本研究では、これらの手法を比較するとともに、
+探索・評価・振り返り・再学習を組み合わせることで、
+より信頼性の高い推論方法を検討しています。
+
+## Research Objective
+
+探索的推論と自己反省を組み合わせ、過去の成功・失敗経験を継続的に利用できるLLM推論モデルを構築すること
+
+- Success Memory
+正しく生成され、品質検証を通過した推論をLoRA学習データとして利用する
+
+Correct Resoning
+       ↓
+Quality Verification
+       ↓
+LoRA Training Data
+       ↓
+LoRA Fine-tuning
+       ↓
+Model Parameters
+
+-Failure Memory (Future Work)
+最後まで修正できなかった推論については、外部メモリへ保存する
+
+Failed Reasoning
+       ↓
+Failure Analysis / Relfection
+       ↓
+Vectorization
+       ↓
+Vector Database
+       ↓
+Similarity Search
+       ↓
+Relevant Reflection
+       ↓
+Future Reasoning
+
+・成功経験　→ LoRAによる内部記憶
+・失敗経験 → RAGによる外部記憶
 
 ## Proposed Architecture
 
 
-## Methods
+## Implementation
+自分が実装したもの
 
-- Chain-of-Thought (CoT)
-- Tree-of-Thought (ToT)
-- Reflexion
-- Proposed Method
 
-## Experimental Setup
 
-Dataset : GSM8K
 
-Model: Llama-3-8B-Instruct
+
+##　Experimental Setup
+- Dataset: GSM8K
+- Base Model: Llama-3-8B-Instruct
+- Evaluation Metric: Accuracy
+- Methods:
+  - Chain-of-Thought (CoT)
+  - Tree-of-Thought (ToT)
+  - Reflexion
+  - Proposed Method
 
 ## Results
+
+Evaluation Samples: 1,000 questions
 
 | Method          | Accuracy |
 |-----------------|---------:|
@@ -43,12 +108,25 @@ Model: Llama-3-8B-Instruct
 | ToT + Reflexion | 89.6%    |
 | Proposed Method | 86.9%    |
 
+## Current Research Status
+
+現在、CoT、ToT、ToT + Reflexionの比較評価を完了し、
+探索と自己修正を組み合わせることで推論性能が向上することを確認しています。
+
+一方、提案モデルについては、現時点では
+ToT + Reflexionを上回る性能は確認できていません。
+
+現在は、学習データの品質や推論経路の選択方法などを分析し、
+性能低下の原因を検証しています。
+
+本研究は現在も継続中です。
+
 ## Discussion
+結果から何が分かったか
 
-ToTとReflexionを組み合わせることで性能向上を確認した。
 
-一方、提案モデルについては現時点では既存手法を上回る
-性能は確認できておらず、原因分析と改善を進めています。
+## Limitations
+まだわかっていないこと
 
 ## Future Work
 
@@ -56,4 +134,15 @@ ToTとReflexionを組み合わせることで性能向上を確認した。
 - 学習データの品質改善
 - 推論コストと精度の比較
 - 提案モデルの追加評価
+
+## Repository Structure
+コードの説明
+
+
+## References
+- Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
+- Tree of Thoughts: Deliberate Problem Solving with Large Language Models
+- Reflexion: Language Agents with Verbal Reinforcement Learning
+- Training Verifiers to Solve Math Word Problems (GSM8K)
+
 
