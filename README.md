@@ -250,7 +250,7 @@ llm-reasoning-research/
 > 本研究で使用した全学習データではないため、論文・実験結果の完全な再現を目的としたものではありません。
 
 
-**Planned Extensions**
+## Planned Extensions
 
 今後、修正できなかった推論を **Failure Memory** として保存し、RAGによる類似失敗検索を実装する予定です。
 
