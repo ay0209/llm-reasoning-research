@@ -44,41 +44,43 @@ LoRA
 
 探索的推論と自己反省を組み合わせ、過去の成功・失敗経験を継続的に利用できるLLM推論モデルを構築すること
 
-- Success Memory
-正しく生成され、品質検証を通過した推論をLoRA学習データとして利用する
+### Success Memory
 
-Correct Resoning
-       ↓
-Quality Verification
-       ↓
-LoRA Training Data
-       ↓
-LoRA Fine-tuning
-       ↓
-Model Parameters
+正しく生成され、品質検証を通過した推論を高品質な学習データとして保存し、LoRAによる追加学習に利用する。
 
--Failure Memory (Future Work)
-最後まで修正できなかった推論については、外部メモリへ保存する
+```mermaid
+flowchart TD
+    A[Correct Reasoning] --> B[Quality Verification]
+    B --> C[LoRA Training Data]
+    C --> D[LoRA Fine-tuning]
+    D --> E[Model Parameters]
+```
 
-Failed Reasoning
-       ↓
-Failure Analysis / Relfection
-       ↓
-Vectorization
-       ↓
-Vector Database
-       ↓
-Similarity Search
-       ↓
-Relevant Reflection
-       ↓
-Future Reasoning
+### Failure Memory (Future Work)
 
-・成功経験　→ LoRAによる内部記憶
-・失敗経験 → RAGによる外部記憶
+最後まで修正できなかった推論については、失敗内容と反省情報を外部メモリに保存し、将来の類似問題における推論に活用する。
+
+```mermaid
+flowchart TD
+    A[Failed Reasoning] --> B[Failure Analysis / Reflection]
+    B --> C[Vectorization]
+    C --> D[Vector Database]
+    D --> E[Similarity Search]
+    E --> F[Relevant Reflection Retrieval]
+    F --> G[Future Reasoning]
+```
+### Memory Strategy
+
+| Experience | Memory Type | Method | Purpose |
+|---|---|---|---|
+| Success Experience | Internal Memory | LoRA | 正しい推論をモデルのパラメータに反映 |
+| Failure Experience | External Memory | RAG | 過去の失敗や反省を検索し、将来の推論に活用 |
+
 
 ## Proposed Architecture
-
+<p align="center">
+  <img src="Images/Proposed_Architecture_LLMreasoning.png" width="850">
+</p>
 
 ## Implementation
 自分が実装したもの
