@@ -223,6 +223,54 @@ llm-reasoning-research/
 └── README.md
 ```
 
+## Installation
+
+
+必要なPythonライブラリをインストールします。
+
+```bash
+pip install -r requirements.txt
+```
+
+## Environment
+
+本研究では、以下の環境で実験を行いました。
+
+- Python: 3.10.12
+- PyTorch: 2.11.0+cu128
+- CUDA: 12.8
+- Transformers: 5.12.1
+- PEFT: 0.19.1
+- bitsandbytes: 0.49.2
+
+## Usage
+
+### 1. Generate Reasoning Training Data
+
+CoT、ToT、Reflexion、STaRを用いて推論を生成し、品質検証を通過した推論をLoRA学習データとして保存します。
+
+```bash
+python generate_long_reasoning_train.py
+```
+
+生成された学習データは、JSONL形式で保存されます。
+
+### 2. LoRA / QLoRA Fine-tuning
+
+生成した学習データを使用して、QLoRAによる追加学習を行います。
+
+```bash
+python train_lora_reflexion_star.py
+```
+
+### 3. Evaluate the Fine-tuned Model
+
+学習後のモデルをGSM8K test splitで評価し、Accuracyを算出します。
+
+```bash
+python gsm8k_lora_eval.py
+```
+
 
 ### Training Data
 
