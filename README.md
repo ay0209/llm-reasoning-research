@@ -196,6 +196,7 @@ Evaluation Samples: 50 questions
 - 提案モデルの追加評価
 
 ## Repository Structure
+
 ```text
 llm-reasoning-research/
 │
@@ -219,13 +220,31 @@ llm-reasoning-research/
 ├── gsm8k_lora_eval.py
 │   └── LoRAモデルのGSM8K評価
 │
-├── tot_reflexion_star_train.jsonl
-│   └── 品質検証済み推論データ
+├── data/
+│   └── sample_training_data.jsonl
+│       └── 品質検証済み推論データのサンプル
 │
 ├── architecture.png
 │   └── 提案モデルのアーキテクチャ
 │
+├── requirements.txt
+│   └── 実行に必要なPythonライブラリ
+│
+├── .gitignore
+│   └── 学習データ・モデル重み・キャッシュ等を除外
+│
 └── README.md
+
+```markdown
+### Training Data
+
+生成した学習データ全体はファイルサイズを考慮して公開していません。
+
+品質検証済み推論データの一部を、以下のファイルにサンプルとして掲載しています。
+
+`data/sample_training_data.jsonl`
+```
+
 
 **Planned Extensions**
 今後、Failure Memory実装後に以下を追加する予定です。
