@@ -79,7 +79,7 @@ flowchart TD
 
 ## Proposed Architecture
 <p align="center">
-  <img src="images/Proposed_Architecture_LLMreasoning.png" width="850">
+  <img src="images/proposed_architecture.png" width="850">
 </p>
 
 
