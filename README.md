@@ -157,7 +157,7 @@ Evaluation Samples: 50 questions
 | CoT (Base Model / Before Fine-tuning) | 76.0% |
 | ToT | 74.0% |
 | ToT + Reflexion | 68.0% |
-| Proposed Method (After QLoRA Fine-tuning) | **78.3%** |
+| Proposed Method (After QLoRA Fine-tuning) | **78.0%** |
 
 ## Current Research Status
 
