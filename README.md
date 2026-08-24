@@ -236,15 +236,14 @@ llm-reasoning-research/
 └── README.md
 ```
 
-```markdown
+
 ### Training Data
 
-生成した学習データ全体はファイルサイズを考慮して公開していません。
+生成した学習データ全体はファイルサイズを考慮し,公開していません。
 
 品質検証済み推論データの一部を、以下のファイルにサンプルとして掲載しています。
 
 `data/sample_training_data.jsonl`
-```
 
 
 **Planned Extensions**
