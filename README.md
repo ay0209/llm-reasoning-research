@@ -7,11 +7,11 @@ CoT・ToT・Reflexion・STaR・LoRAを統合したLLMの数理推論性能向上
 
 本研究では、
 
-Chain-of-Thought（CoT）
-Tree-of-Thoughts（ToT）
-Reflexion
-STaR
-LoRA
+Chain-of-Thought（CoT）,
+Tree-of-Thoughts（ToT）,
+Reflexion,
+STaR,
+LoRA,
 
 による探索・自己修正・学習を行う推論システムを構築し、その有効性を検証します。
 
