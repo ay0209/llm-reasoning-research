@@ -143,7 +143,7 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 - LLM Verifierによる追加検証
 
 
-##　Experimental Setup
+## Experimental Setup
 
 実験では、Meta-Llama-3-8B-Instructをベースモデルとして使用し、GSM8Kを用いて推論性能を評価。
 
