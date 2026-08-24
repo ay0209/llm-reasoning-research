@@ -148,7 +148,9 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 | LoRA Training Data | Correct & Verified Reasoning |
 | Evaluation Metric | Accuracy |
 
+## Results
 
+Evaluation Samples: 50 questions
 
 | Method | Accuracy |
 |---|---:|
