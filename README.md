@@ -255,6 +255,7 @@ pip install -r requirements.txt
 学習前のベースモデルをGSM8K test splitで評価し、Accuracyを算出します。
 
 ```bash
+cd llama3_gsm8k_eval
 python gsm8k_eval.py
 ```
 
