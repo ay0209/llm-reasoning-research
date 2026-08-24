@@ -10,7 +10,7 @@ import torch
 BASE_MODEL = "meta-llama/Meta-Llama-3-8B-Instruct"
 LORA_PATH = "lora_gsm8k_reflexion_star"
 
-LIMIT = 1000
+LIMIT = 50
 MAX_NEW_TOKENS = 512
 
 
