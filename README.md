@@ -150,16 +150,12 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 
 
 
-## Results
-
-Evaluation Samples: 50 questions
-
-| Method          | Accuracy |
-|-----------------|---------:|
-| CoT             | 76.0%    |
-| ToT             | 74.0%    |
-| ToT + Reflexion | 68.0%    |
-| Proposed Method | 78.3%    |
+| Method | Accuracy |
+|---|---:|
+| CoT (Base Model / Before Fine-tuning) | 76.0% |
+| ToT | 74.0% |
+| ToT + Reflexion | 68.0% |
+| Proposed Method (After QLoRA Fine-tuning) | **78.3%** |
 
 ## Current Research Status
 
