@@ -245,6 +245,10 @@ llm-reasoning-research/
 
 `data/sample_training_data.jsonl`
 
+> **Note**
+> このサンプルデータは、生成データの形式と内容を確認するためのものです。
+> 本研究で使用した全学習データではないため、論文・実験結果の完全な再現を目的としたものではありません。
+
 
 **Planned Extensions**
 
