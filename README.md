@@ -211,8 +211,9 @@ llm-reasoning-research/
 │   └── sample_training_data.jsonl
 │       └── 品質検証済み推論データのサンプル
 │
-├── architecture.png
-│   └── 提案モデルのアーキテクチャ
+├── images/
+│   └── architecture.png
+│       └── 提案モデルのアーキテクチャ
 │
 ├── requirements.txt
 │   └── 実行に必要なPythonライブラリ
@@ -221,6 +222,7 @@ llm-reasoning-research/
 │   └── 学習データ・モデル重み・キャッシュ等を除外
 │
 └── README.md
+    └── 研究概要・実験結果・実行方法
 ```
 
 ## Installation
