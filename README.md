@@ -82,7 +82,7 @@ flowchart TD
   <img src="images/Proposed_Architecture_LLMreasoning.png" width="850">
 </p>
 
-```markdown
+
 ## Methods
 
 本研究では、**CoT → ToT → Reflexion → STaR** の順に段階的に推論を行い、必要な場合のみ高コストな推論手法を適用。
@@ -93,7 +93,7 @@ flowchart TD
 
 生成結果が正解かつ品質条件を満たした場合はLoRA学習データとして保存し、条件を満たさない問題のみToTへ移行する。
 
----
+
 
 ### 2. Tree-of-Thoughts (ToT)
 
@@ -101,7 +101,7 @@ CoTで解決できなかった問題に対して、複数の推論方針を生�
 
 有望な候補を選択し、**スコアリング・多数決・LLMによる評価**を用いて最終回答を決定。
 
----
+
 
 ### 3. Reflexion
 
@@ -114,7 +114,7 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 
 生成された推論に対して品質検証を行い、条件を満たしたデータのみLoRA学習に利用。
 
----
+
 
 ### 5. Reasoning Quality Verification
 
@@ -127,7 +127,7 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 - 途中計算と最終回答の整合性確認
 - 不完全な推論の除外
 - LLM Verifierによる追加検証
-```
+
 ## Implementation
 
 本研究では、**CoT・ToT・Reflexion・STaRを組み合わせた段階的な推論パイプライン**をPythonで実装。
@@ -144,7 +144,7 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 
 
 ##　Experimental Setup
-```markdown
+
 
 実験では、Meta-Llama-3-8B-Instructをベースモデルとして使用し、GSM8Kを用いて推論性能を評価。
 
@@ -161,7 +161,7 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 | Quantization | 4-bit NF4 |
 | LoRA Training Data | Correct & Verified Reasoning |
 | Evaluation Metric | Accuracy |
-```
+
 
 
 ## Results
