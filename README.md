@@ -255,7 +255,7 @@ python generate_long_reasoning_train.py
 
 生成された学習データは、JSONL形式で保存されます。
 
-### 2. LoRA / QLoRA Fine-tuning
+### 2.　QLoRA Fine-tuning
 
 生成した学習データを使用して、QLoRAによる追加学習を行います。
 
