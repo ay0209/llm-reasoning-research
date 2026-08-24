@@ -234,6 +234,7 @@ llm-reasoning-research/
 │   └── 学習データ・モデル重み・キャッシュ等を除外
 │
 └── README.md
+```
 
 ```markdown
 ### Training Data
