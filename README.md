@@ -156,7 +156,7 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 | Reasoning Methods | CoT / ToT / Reflexion / STaR |
 | ToT Paths | 5 |
 | ToT Top-k | 3 |
-| Fine-tuning | LoRA / QLoRA |
+| Fine-tuning | QLoRA |
 | Quantization | 4-bit NF4 |
 | LoRA Training Data | Correct & Verified Reasoning |
 | Evaluation Metric | Accuracy |
