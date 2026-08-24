@@ -82,22 +82,87 @@ flowchart TD
   <img src="images/Proposed_Architecture_LLMreasoning.png" width="850">
 </p>
 
+```markdown
+## Methods
+
+本研究では、**CoT → ToT → Reflexion → STaR** の順に段階的に推論を行い、必要な場合のみ高コストな推論手法を適用。
+
+### 1. Chain-of-Thought (CoT)
+
+まず、CoTによって推論過程と最終回答を生成。
+
+生成結果が正解かつ品質条件を満たした場合はLoRA学習データとして保存し、条件を満たさない問題のみToTへ移行する。
+
+---
+
+### 2. Tree-of-Thoughts (ToT)
+
+CoTで解決できなかった問題に対して、複数の推論方針を生成・評価。
+
+有望な候補を選択し、**スコアリング・多数決・LLMによる評価**を用いて最終回答を決定。
+
+---
+
+### 3. Reflexion
+
+CoT・ToTでも解決できなかった場合、Gold Answerを使用せずに失敗原因を分析。
+
+
+### 4. STaR
+
+Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程を再生成。
+
+生成された推論に対して品質検証を行い、条件を満たしたデータのみLoRA学習に利用。
+
+---
+
+### 5. Reasoning Quality Verification
+
+誤った推論を学習データに含めないため、生成された推論過程に対して品質検証を行う。
+
+主な検証項目
+- Final Answerと正解データの一致
+- Final Answerの形式・重複チェック
+- Pythonによる数式の再計算
+- 途中計算と最終回答の整合性確認
+- 不完全な推論の除外
+- LLM Verifierによる追加検証
+```
 ## Implementation
-自分が実装したもの
 
+本研究では、**CoT・ToT・Reflexion・STaRを組み合わせた段階的な推論パイプライン**をPythonで実装。
 
+生成した推論に対して品質検証を行い、**条件を満たした推論のみをLoRA学習データとして利用**。さらに、QLoRAによる追加学習を行い、GSM8Kで性能を評価。
 
+### Reasoning Quality Verification
+
+- Final Answerと正解の一致
+- Pythonによる途中計算の検証
+- 推論過程と最終回答の整合性確認
+- 不完全・不適切な出力の除外
+- LLM Verifierによる追加検証
 
 
 ##　Experimental Setup
-- Dataset: GSM8K
-- Base Model: Llama-3-8B-Instruct
-- Evaluation Metric: Accuracy
-- Methods:
-  - Chain-of-Thought (CoT)
-  - Tree-of-Thought (ToT)
-  - Reflexion
-  - Proposed Method
+```markdown
+
+実験では、Meta-Llama-3-8B-Instructをベースモデルとして使用し、GSM8Kを用いて推論性能を評価。
+
+| Item | Setting |
+| --- | --- |
+| Base Model | Meta-Llama-3-8B-Instruct |
+| Dataset | GSM8K |
+| Training Split | GSM8K train |
+| Evaluation Split | GSM8K test |
+| Reasoning Methods | CoT / ToT / Reflexion / STaR |
+| ToT Paths | 5 |
+| ToT Top-k | 3 |
+| Fine-tuning | LoRA / QLoRA |
+| Quantization | 4-bit NF4 |
+| LoRA Training Data | Correct & Verified Reasoning |
+| Evaluation Metric | Accuracy |
+```
+
 
 ## Results
 
