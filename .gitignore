@@ -78,3 +78,6 @@ Thumbs.db
 *.tmp
 *.temp
 *.bak
+#学習データ
+tot_reflexion_star_train.jsonl
+
