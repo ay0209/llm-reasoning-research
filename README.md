@@ -17,7 +17,7 @@ LoRA,
 
 低コストな推論モデルから開始し、必要に応じて高度な推論モデルへ移行する段階的な構成を採用します。
 
-生成した推論を評価・検証し、高品質な推論のみを学習データとっして利用することで、推論精度と計算効率の両立を目指します。
+生成した推論を評価・検証し、高品質な推論のみを学習データとして利用することで、推論精度と計算効率の両立を目指します。
 
 ## Research Background
 
@@ -150,14 +150,14 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 
 ## Results
 
-Evaluation Samples: 50 questions
+Evaluation Samples: 1000 questions
 
 | Method | Accuracy |
 |---|---:|
-| CoT (Base Model / Before Fine-tuning) | 76.0% |
+| CoT (Base Model / Before Fine-tuning) | 76.6% |
 | ToT | 74.0% |
 | ToT + Reflexion | 68.0% |
-| Proposed Method (After QLoRA Fine-tuning) | **78.0%** |
+| Proposed Method (After QLoRA Fine-tuning) | **78.3%** |
 
 ## Current Research Status
 
