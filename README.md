@@ -255,7 +255,7 @@ failure_memory/
 ├── embed_failure.py
 ├── vector_store.py
 └── retrieve_failure.py
-```
+
 
 ## References
 - Wei et al., *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*
