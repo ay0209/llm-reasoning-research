@@ -1,0 +1,80 @@
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ==============================
+# Virtual Environment
+# ==============================
+venv/
+.venv/
+env/
+ENV/
+
+# ==============================
+# Environment variables / Secrets
+# ==============================
+.env
+.env.*
+*.key
+*.pem
+
+# ==============================
+# Hugging Face / Model Cache
+# ==============================
+.cache/
+huggingface/
+hf_cache/
+
+# ==============================
+# Model Weights / Checkpoints
+# ==============================
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+
+checkpoint-*/
+checkpoints/
+
+# LoRA output
+lora_gsm8k_reflexion_star/
+adapter_model/
+outputs/
+output/
+
+# ==============================
+# Logs
+# ==============================
+*.log
+logs/
+wandb/
+runs/
+
+# ==============================
+# Jupyter
+# ==============================
+.ipynb_checkpoints/
+
+# ==============================
+# IDE
+# ==============================
+.vscode/
+.idea/
+
+# ==============================
+# OS generated files
+# ==============================
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Temporary files
+# ==============================
+*.tmp
+*.temp
+*.bak
