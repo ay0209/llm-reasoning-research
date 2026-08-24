@@ -247,15 +247,17 @@ llm-reasoning-research/
 
 
 **Planned Extensions**
-今後、Failure Memory実装後に以下を追加する予定です。
 
+今後、修正できなかった推論を **Failure Memory** として保存し、RAGによる類似失敗検索を実装する予定です。
+
+```text
 failure_memory.jsonl
 
 failure_memory/
 ├── embed_failure.py
 ├── vector_store.py
 └── retrieve_failure.py
-
+```
 
 ## References
 - Wei et al., *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*
