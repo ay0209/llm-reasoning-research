@@ -8,7 +8,7 @@ import torch
 
 BASE_MODEL = "meta-llama/Meta-Llama-3-8B-Instruct"
 
-LIMIT = 1000
+LIMIT = 50
 MAX_NEW_TOKENS = 512
 
 
