@@ -165,34 +165,28 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 
 ## Results
 
-Evaluation Samples: 1,000 questions
+Evaluation Samples: 50 questions
 
 | Method          | Accuracy |
 |-----------------|---------:|
-| CoT             | 79.6%    |
-| ToT             | 85.9%    |
-| ToT + Reflexion | 89.6%    |
-| Proposed Method | 86.9%    |
+| CoT             | 76.0%    |
+| ToT             | 74.0%    |
+| ToT + Reflexion | 68.0%    |
+| Proposed Method | 78.3%    |
 
 ## Current Research Status
 
-現在、CoT、ToT、ToT + Reflexionの比較評価を完了し、
-探索と自己修正を組み合わせることで推論性能が向上することを確認しています。
+現在、CoT、ToT、ToT + Reflexion、提案手法の比較評価を行っています。
 
-一方、提案モデルについては、現時点では
-ToT + Reflexionを上回る性能は確認できていません。
+50問を用いた初期評価では、提案手法が 78.3% と最も高い正答率を示し、CoTの 76.0% を上回りました。
 
-現在は、学習データの品質や推論経路の選択方法などを分析し、
-性能低下の原因を検証しています。
+一方で、ToTは 74.0%、ToT + Reflexionは 68.0% となっており、探索や自己反省を追加するだけでは必ずしも性能が向上しないことも確認しています。
+
+現在は、推論経路の選択方法、Reflexionによる修正の有効性、学習データの品質などを分析し、各手法の性能差が生じる原因を検証しています。
+
+今後は評価問題数を増やし、提案手法の有効性をより詳細に検証するとともに、Failure Memoryを用いた長期的な推論改善へ拡張する予定です。
 
 本研究は現在も継続中です。
-
-## Discussion
-結果から何が分かったか
-
-
-## Limitations
-まだわかっていないこと
 
 ## Future Work
 
@@ -202,13 +196,52 @@ ToT + Reflexionを上回る性能は確認できていません。
 - 提案モデルの追加評価
 
 ## Repository Structure
-コードの説明
+```text
+llm-reasoning-research/
+│
+├── model_loader.py
+│   └── Llama 3 / Tokenizerの読み込み
+│
+├── generator.py
+│   └── LLMテキスト生成
+│
+├── generate_long_reasoning_train.py
+│   ├── CoT
+│   ├── ToT
+│   ├── Reflexion
+│   ├── STaR
+│   ├── 推論品質検証
+│   └── LoRA学習データ生成
+│
+├── train_lora_reflexion_star.py
+│   └── QLoRAによる追加学習
+│
+├── gsm8k_lora_eval.py
+│   └── LoRAモデルのGSM8K評価
+│
+├── tot_reflexion_star_train.jsonl
+│   └── 品質検証済み推論データ
+│
+├── architecture.png
+│   └── 提案モデルのアーキテクチャ
+│
+└── README.md
 
+### Planned Extensions
+今後、Failure Memory実装後に以下を追加する予定です。
+
+failure_memory.jsonl
+
+failure_memory/
+├── embed_failure.py
+├── vector_store.py
+└── retrieve_failure.py
 
 ## References
-- Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
-- Tree of Thoughts: Deliberate Problem Solving with Large Language Models
-- Reflexion: Language Agents with Verbal Reinforcement Learning
-- Training Verifiers to Solve Math Word Problems (GSM8K)
+- Wei et al., *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*
+- Yao et al., *Tree of Thoughts: Deliberate Problem Solving with Large Language Models*
+- Shinn et al., *Reflexion: Language Agents with Verbal Reinforcement Learning*
+- Zelikman et al., *STaR: Bootstrapping Reasoning With Reasoning*
+- Cobbe et al., *Training Verifiers to Solve Math Word Problems*
 
 
