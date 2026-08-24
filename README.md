@@ -187,26 +187,6 @@ Evaluation Samples: 50 questions
 ```text
 llm-reasoning-research/
 │
-├── model_loader.py
-│   └── Llama 3 / Tokenizerの読み込み
-│
-├── generator.py
-│   └── LLMテキスト生成
-│
-├── generate_long_reasoning_train.py
-│   ├── CoT
-│   ├── ToT
-│   ├── Reflexion
-│   ├── STaR
-│   ├── 推論品質検証
-│   └── LoRA学習データ生成
-│
-├── train_lora_reflexion_star.py
-│   └── QLoRAによる追加学習
-│
-├── gsm8k_lora_eval.py
-│   └── LoRAモデルのGSM8K評価
-│
 ├── data/
 │   └── sample_training_data.jsonl
 │       └── 品質検証済み推論データのサンプル
@@ -215,14 +195,36 @@ llm-reasoning-research/
 │   └── architecture.png
 │       └── 提案モデルのアーキテクチャ
 │
+├── llama3_gsm8k_eval/
+│   │
+│   ├── model_loader.py
+│   │   └── Llama 3モデル・Tokenizerの読み込み
+│   │
+│   ├── generator.py
+│   │   └── LLMによるテキスト生成処理
+│   │
+│   ├── generate_long_reasoning_train.py
+│   │   ├── CoTによる初期推論
+│   │   ├── ToTによる推論経路の探索
+│   │   ├── Reflexionによる失敗分析
+│   │   ├── STaRによる推論修正
+│   │   ├── 推論品質検証
+│   │   └── LoRA学習データ生成
+│   │
+│   ├── train_lora_reflexion_star.py
+│   │   └── QLoRAによる追加学習
+│   │
+│   └── gsm8k_lora_eval.py
+│       └── 学習後モデルのGSM8K評価
+│
+├── .gitignore
+│   └── モデル重み・キャッシュ・仮想環境などを除外
+│
 ├── requirements.txt
 │   └── 実行に必要なPythonライブラリ
 │
-├── .gitignore
-│   └── 学習データ・モデル重み・キャッシュ等を除外
-│
 └── README.md
-    └── 研究概要・実験結果・実行方法
+    └── 研究概要・提案手法・実験結果・実行方法
 ```
 
 ## Installation
