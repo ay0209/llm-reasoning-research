@@ -192,7 +192,7 @@ llm-reasoning-research/
 │       └── 品質検証済み推論データのサンプル
 │
 ├── images/
-│   └── architecture.png
+│   └── proposed_architecture.png
 │       └── 提案モデルのアーキテクチャ
 │
 ├── llama3_gsm8k_eval/
@@ -202,6 +202,9 @@ llm-reasoning-research/
 │   │
 │   ├── generator.py
 │   │   └── LLMによるテキスト生成処理
+│   │
+│   ├── gsm8k_eval.py
+│   │   └── 学習前のベースモデルをGSM8Kで評価
 │   │
 │   ├── generate_long_reasoning_train.py
 │   │   ├── CoTによる初期推論
@@ -215,7 +218,7 @@ llm-reasoning-research/
 │   │   └── QLoRAによる追加学習
 │   │
 │   └── gsm8k_lora_eval.py
-│       └── 学習後モデルのGSM8K評価
+│       └── QLoRA学習後モデルをGSM8Kで評価
 │
 ├── .gitignore
 │   └── モデル重み・キャッシュ・仮想環境などを除外
@@ -249,7 +252,15 @@ pip install -r requirements.txt
 
 ## Usage
 
-### 1. Generate Reasoning Training Data
+### 1. Evaluate the Base Model
+
+学習前のベースモデルをGSM8K test splitで評価し、Accuracyを算出します。
+
+```bash
+python gsm8k_eval.py
+```
+
+### 2. Generate Reasoning Training Data
 
 CoT、ToT、Reflexion、STaRを用いて推論を生成し、品質検証を通過した推論をLoRA学習データとして保存します。
 
@@ -257,9 +268,7 @@ CoT、ToT、Reflexion、STaRを用いて推論を生成し、品質検証を通�
 python generate_long_reasoning_train.py
 ```
 
-生成された学習データは、JSONL形式で保存されます。
-
-### 2.　QLoRA Fine-tuning
+### 3. QLoRA Fine-tuning
 
 生成した学習データを使用して、QLoRAによる追加学習を行います。
 
@@ -267,14 +276,13 @@ python generate_long_reasoning_train.py
 python train_lora_reflexion_star.py
 ```
 
-### 3. Evaluate the Fine-tuned Model
+### 4. Evaluate the Fine-tuned Model
 
-学習後のモデルをGSM8K test splitで評価し、Accuracyを算出します。
+QLoRA学習後のモデルをGSM8K test splitで評価し、Accuracyを算出します。
 
 ```bash
 python gsm8k_lora_eval.py
 ```
-
 
 ### Training Data
 
