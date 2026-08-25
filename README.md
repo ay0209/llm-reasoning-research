@@ -150,22 +150,22 @@ Reflexionによる失敗分析とGold Answerを利用し、正しい推論過程
 
 ## Results
 
-Evaluation Samples: 1000 questions
+Evaluation Samples: 50 questions
 
 | Method | Accuracy |
 |---|---:|
-| CoT (Base Model / Before Fine-tuning) | 76.6% |
-| ToT | 74.0% |
-| ToT + Reflexion | 68.0% |
-| Proposed Method (After QLoRA Fine-tuning) | **78.3%** |
+| CoT (Base Model / Before Fine-tuning) | 72.0% |
+| ToT | 68.0% |
+| ToT + Reflexion | 62.0% |
+| Proposed Method (After QLoRA Fine-tuning) | **74.0%** |
 
 ## Current Research Status
 
 現在、CoT、ToT、ToT + Reflexion、提案手法の比較評価を行っています。
 
-50問を用いた初期評価では、提案手法が 78.3% と最も高い正答率を示し、CoTの 76.6% を上回りました。
+50問を用いた初期評価では、提案手法が74.0%と最も高い正答率を示し、CoTの72.0%を上回りました。
 
-一方で、ToTは 74.0%、ToT + Reflexionは 68.0% となっており、探索や自己反省を追加するだけでは必ずしも性能が向上しないことも確認しています。
+一方で、**ToTは68.0%、ToT + Reflexionは62.0%**となっており、探索や自己反省を単純に追加するだけでは、必ずしも性能が向上しないことも確認しています。
 
 現在は、推論経路の選択方法、Reflexionによる修正の有効性、学習データの品質などを分析し、各手法の性能差が生じる原因を検証しています。
 
